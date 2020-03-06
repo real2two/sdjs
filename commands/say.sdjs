@@ -1,0 +1,6 @@
+# Currently has bugs.
+ifargs else 4
+send {args}
+stop
+sendembed Invalid Arguments | #FF0000 | Please enter arguments to use this command.
+stop
