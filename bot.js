@@ -64,6 +64,7 @@ async function loopCommand(client, message, code, loopnum, lines, cmdvar) {
             if (loopnum > lines) {
               loopnum = lines + 1
             }
+            delete eventFile.loopnum
           } else {
             loopnum = loopnum + 1
           }
