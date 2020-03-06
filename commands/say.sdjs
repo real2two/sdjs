@@ -1,5 +1,5 @@
 # Currently has bugs.
-ifargs else 4
+ifargs else 5
 send {args}
 stop
 sendembed Invalid Arguments | #FF0000 | Please enter arguments to use this command.
