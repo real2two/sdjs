@@ -17,7 +17,7 @@ exports.run = (client, message, args, loopnum, maxlines) => {
           console.log("Error on line " + loopnum.toString() + `: Improper usage of "ifargs". Please enter a valid number.`);
           return
         } else {
-          if (actualargs !== "") {
+          if ((actualargs.length !== 0)) {
             exports.loopnum = parseFloat(lineargs);
           }
           return
@@ -33,10 +33,8 @@ exports.run = (client, message, args, loopnum, maxlines) => {
           console.log("Error on line " + loopnum.toString() + `: Improper usage of "ifargs". Please enter a valid number.`);
           return
         } else {
-          if (actualargs == "") {
+          if (actualargs.length == 0) {
             exports.loopnum = parseFloat(lineargs);
-          } else {
-            console.log("No")
           }
           return
         }
