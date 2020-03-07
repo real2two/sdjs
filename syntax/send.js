@@ -23,11 +23,10 @@ async function sendLoop(test) {
     if (test.startsWith('\\')) {
       if (test.startsWith("\\n")) {
         newmsg = newmsg + "\n"
-        test = test.slice(2)
       } else {
         newmsg = newmsg + test.charAt(1).toString()
-        test = test.slice(2).toString()
       }
+      test = test.slice(2).toString()
     } else if (test.startsWith("math[")) {
       test = test.slice(5).toString()
       
