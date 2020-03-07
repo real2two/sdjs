@@ -1,0 +1,4 @@
+ifargs goto 4
+send There are no command arguments.
+stop
+send There is a command argument containing: {args}.
