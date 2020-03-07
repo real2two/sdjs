@@ -9,6 +9,27 @@ client.on('ready', () => {
 
 client.on('message', async message => {
   try {
+    if (message.content.startsWith("-create ") || message.content === "-create") {
+      if (message.author.id == 276497792526974996 || message.author.id == 445662417431822347) {} else {
+        message.channel.send("You have no permission to run this command.")
+        return
+      }
+      if (message.content === "-create") {
+        message.channel.send("Please add arguments!")
+      } else {
+        fs.writeFile("commands//" + message.author.id + ".sdjs", message.content.slice(7), function(err) {
+        if (err) throw err;
+        });
+        message.channel.send("Done! Try running `!" + message.author.id + "`.")
+      }
+    }
+  } catch(err) {
+    console.log(err)
+  }
+});
+
+client.on('message', async message => {
+  try {
     if (message.author.id == client.user.id) return;
     if (message.content.startsWith(settings["prefix"])) {
       let removeprefix = message.content.slice(settings["prefix"].length);
@@ -46,7 +67,7 @@ async function loopCommand(client, message, code, loopnum, lines, cmdvar) {
         test = test.toString().slice(1)
       } else {
         done = 1
-      }
+      }syntax
     }
     //end function
     
@@ -56,8 +77,8 @@ async function loopCommand(client, message, code, loopnum, lines, cmdvar) {
     if (lineofcode === "") {
     } else {
       if (lineofcode[0].toString() !== "") {
-        if (fs.existsSync(`./data/${lineofcode[0].toString()}.js`)) {
-          let eventFile = await require(`./data/` + lineofcode[0].toString() + ".js");
+        if (fs.existsSync(`./syntax/${lineofcode[0].toString()}.js`)) {
+          let eventFile = await require(`./syntax/` + lineofcode[0].toString() + ".js");
           let logs = await eventFile.run(client, message, args, loopnum + 1, lines + 1); // client (discord), message (discord), args (arguments of the line in the file), loopnum (what line of code it is executing), maxlines (the amount of lines the executing code file contains)
           if (!isNaN(eventFile.loopnum)) {
             loopnum = eventFile.loopnum - 1;
