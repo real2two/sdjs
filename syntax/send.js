@@ -13,7 +13,7 @@ exports.run = (client, message, arguments, loopnum, maxlines) => {
       }
     });
   } else {
-    console.log("Error on line " + loopnum.toString() + `: Improper usage of "send". There should be at least one argument.`);
+    console.log("Error on line " + loopnum.toString() + `: Improper usage of "send". There should be at least one parameter.`);
   }
 }
 
@@ -21,8 +21,13 @@ async function sendLoop(test) {
   newmsg = ""
   while (test !== "") {
     if (test.startsWith('\\')) {
-      newmsg = newmsg + test.charAt(1).toString()
-      test = test.slice(2).toString()
+      if (test.startsWith("\\n")) {
+        newmsg = newmsg + "\n"
+        test = test.slice(2)
+      } else {
+        newmsg = newmsg + test.charAt(1).toString()
+        test = test.slice(2).toString()
+      }
     } else if (test.startsWith("math[")) {
       test = test.slice(5).toString()
       
