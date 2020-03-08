@@ -52,10 +52,10 @@ async function sendLoop(test) {
       
       math = test2.toString();
       test = test.slice(math.length)
-      mathtest = await math.toString().replace(/\s/g, "").toString().replace(/[/0/1/2/3/4/5/6/7/8/9/(/)/*/+/-/]/g, "").toString()
+      mathtest = await math.toString().replace(/\s/g, "").toString().replace(/[/0/1/2/3/4/5/6/7/8/9/(/)/*/+/-/^/]/g, "").toString()
       if (mathtest === "") {
         try {
-          newmsg = newmsg.toString() + eval(math).toString()
+          newmsg = newmsg.toString() + eval(math.replace(/[/^/]/g, "**")).toString()
         } catch(junk) {
           newmsg = newmsg.toString() + "undefined"
         }
