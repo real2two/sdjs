@@ -1,3 +1,5 @@
+***Discontinued due to rewrite!***
+
 # Simplified Discord.JS (SDJS)
 
 This is a completely new programming language which uses node.js and discord.js to work.
